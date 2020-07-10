@@ -1,0 +1,10 @@
+app: fullstack-app
+component: express
+name: api
+inputs:
+  src: ./
+  roleName: '${output:permissions.name}'
+  openApi: true
+  env:
+    db: '${output:database.name}'
+    dbIndex1: '${output:database.indexes.gsi1.name}'

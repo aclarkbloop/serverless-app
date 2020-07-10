@@ -1,0 +1,28 @@
+app: fullstack-app
+component: aws-dynamodb
+name: database
+inputs:
+  name: '${name}-${stage}'
+  region: us-east-1
+  deletionPolicy: retain
+  attributeDefinitions:
+    - AttributeName: hk
+      AttributeType: S
+    - AttributeName: sk
+      AttributeType: S
+    - AttributeName: sk2
+      AttributeType: S
+  keySchema:
+    - AttributeName: hk
+      KeyType: HASH
+    - AttributeName: sk
+      KeyType: RANGE
+  globalSecondaryIndexes:
+    - IndexName: gsi1
+      KeySchema:
+        - AttributeName: sk2
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL

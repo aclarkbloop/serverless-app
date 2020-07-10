@@ -1,0 +1,8 @@
+app: fullstack-app
+component: website
+name: site
+inputs:
+  src:
+    src: ./
+    hook: npm run build
+    dist: build
