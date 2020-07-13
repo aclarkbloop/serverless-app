@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const passport = require('passport')
 const {
-  users
+  users,
+  spending
 } = require('./controllers')
 
 /**
@@ -49,11 +50,13 @@ app.options(`*`, (req, res) => {
   res.status(200).send()
 })
 
+app.post(`/spending/`, spending.saveSpendingData)
+
 app.post(`/users/register`, users.register)
 
 app.post(`/users/login`, users.login)
 
-app.get(`/test/`, (req, res) => {
+app.post(`/test/`, (req, res) => {
   res.status(200).send('Request received')
 })
 

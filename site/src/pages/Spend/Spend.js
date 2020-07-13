@@ -5,9 +5,10 @@ import {
 } from 'react-router-dom'
 import {
     getSession,
-    deleteSession 
+    spendData
   } from '../../utils'
 import styles from './Spend.module.css'
+
 
 class Spend extends Component {
 
@@ -32,9 +33,15 @@ class Spend extends Component {
         this.setState({value: event.target.value});
       }
 
-      handleSubmit(event) {
+      async handleSubmit(event) {
         console.log(this.state.value);
         event.preventDefault();
+        try {
+            await spendData();
+        } catch (error) {
+            console.log(error)
+        }
+        
       }
 
       render() {

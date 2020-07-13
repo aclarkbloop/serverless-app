@@ -1,35 +1,26 @@
 const AWS = require('aws-sdk')
-const shortid = require('shortid')
-const utils = require('../utils')
 
 const dynamodb = new AWS.DynamoDB.DocumentClient({
   region: process.env.AWS_REGION
 })
 
-const saveSpendData = async(user = {}) => {
+const saveSpendData = async() => {
 
-    // Validate
-  
-    // Check if user is already registered
-    const existingUser = await getByEmail(user.email)
-    if (existingUser) {
-      throw new Error(`A user with email "${user.email}" is already registered`)
-    }
-  
-    user.password = utils.hashPassword(user.password)
-  
-    // Save
-    const params = {
-      TableName: process.env.db,
-      Item: {
-        hk: user.email,
-        sk: 'user',
-        sk2: shortid.generate(),
+  const params = {
+    TableName: process.env.db2,
+    Item: {
+        hk: 'email',
+        sk: 'spend',
+        sk2: 50,
         createdAt: Date.now(),
         updatedAt: Date.now(),
-        password: user.password,
+        type: 'food',
       }
     }
-  
-    await dynamodb.put(params).promise()
-  }
+
+  await dynamodb.put(params).promise()
+}
+
+module.exports = {
+  saveSpendData,
+}
