@@ -24,3 +24,15 @@ inputs:
       Resource:
         - '${output:database.arn}'
         - '${output:database.arn}/index/*'
+        - 'arn:aws:dynamodb:us-east-1:552115164637:table/userSpending-dev'
+    # - Effect: Allow
+    #   Action:
+    #     - 'dynamodb:DescribeTable'
+    #     - 'dynamodb:Query'
+    #     - 'dynamodb:GetItem'
+    #     - 'dynamodb:PutItem'
+    #     - 'dynamodb:UpdateItem'
+    #     - 'dynamodb:DeleteItem'
+    #   Resource:
+    #     - 'arn:aws:dynamodb:us-east-1:552115164637:table/userSpending-dev'
+        

@@ -3,7 +3,6 @@ component: aws-dynamodb
 name: database
 
 inputs:
-  // database-dev
   name: ${name}-${stage}
   region: us-east-1
   # Don't delete the Database Table if "serverless remove" is run

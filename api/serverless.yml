@@ -8,5 +8,4 @@ inputs:
   env:
     db: '${output:database.name}'
     dbIndex1: '${output:database.indexes.gsi1.name}'
-    db2: '${output:database2.name}'
-    db2Index1: '${output:database2.indexes.gsi1.name}'
+    db2: 'userSpending-dev'

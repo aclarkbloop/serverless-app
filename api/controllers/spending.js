@@ -1,6 +1,8 @@
 const spending = require('../models/spending')
 
-const saveUserData = async (res) => {
+const saveSpendingData = async (req, res, next) => {
+
+    // return res.status(200).json({ message: "BLOOP" })
 
     try {
       await spending.saveSpendData()
@@ -12,5 +14,5 @@ const saveUserData = async (res) => {
 }
 
 module.exports = {
-    saveUserData,
+  saveSpendingData,
 }
