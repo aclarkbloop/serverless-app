@@ -6,7 +6,9 @@ import {
 } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Auth from './pages/Auth/Auth'
-import Spend from './pages/Spend/Spend'
+import SpendFood from './pages/Spend/SpendFood'
+import SpendRent from './pages/Spend/SpendRent'
+import SpendPersonal from './pages/Spend/SpendPersonal'
 import Dashboard from './pages/Dashboard/Dashboard'
 import { getSession } from './utils'
 
@@ -34,8 +36,16 @@ export default class App extends Component {
             <Auth />
           </Route>
 
-          <Route path='/spend'>
-            <Spend />
+          <Route path='/spendFood'>
+            <SpendFood />
+          </Route>
+
+          <Route path='/spendPersonal'>
+            <SpendPersonal />
+          </Route>
+
+          <Route path='/spendRent'>
+            <SpendRent />
           </Route>
 
           <PrivateRoute

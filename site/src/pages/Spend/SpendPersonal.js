@@ -7,7 +7,7 @@ import {
     getSession,
     spendData
   } from '../../utils'
-import styles from './Spend.module.css'
+import styles from './SpendPersonal.module.css'
 
 
 class Spend extends Component {
@@ -28,13 +28,11 @@ class Spend extends Component {
         })
       }
 
-
       handleChange(event) {
         this.setState({value: event.target.value});
       }
 
       async handleSubmit(event) {
-        console.log(this.state.value);
         event.preventDefault();
         try {
             await spendData();

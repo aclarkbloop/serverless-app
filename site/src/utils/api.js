@@ -5,8 +5,10 @@
 import config from '../config'
 
 export const spendData = async () => {
-  return await requestApi('/spending/', 'POST', {})
+  return await requestApi('/spending/', 'POST', {  })
 }
+
+// email, type, amount
 
 /**
  * Register a new user

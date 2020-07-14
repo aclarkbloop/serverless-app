@@ -72,11 +72,15 @@ class Dashboard extends Component {
           <div className={styles.App}>
             <header className={styles.appHeader}>My Spending
              <div className={styles.buttonHolder}>
-             <Link to='/spend'>
+             <Link to='/spendFood'>
               <Button  className={styles.button}>Food</Button>{' '}
             </Link>
+            <Link to='/spendRent'>
               <Button onClick={this.rentClicked} className={styles.button}>Rent</Button>{' '}
+            </Link>
+            <Link to='/spendPersonal'>
               <Button onClick={this.personalClicked} className={styles.button}>Personal</Button>{' '}
+            </Link>
             </div>
           </header>
         </div>
