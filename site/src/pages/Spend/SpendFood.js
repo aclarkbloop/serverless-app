@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom'
 import {
     getSession,
-    spendData
+    spendData,
+    deleteSession
   } from '../../utils'
 import styles from './SpendFood.module.css'
 
@@ -18,6 +19,7 @@ class Spend extends Component {
         
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.logout = this.logout.bind(this)
       }
     
       async componentDidMount() { 
@@ -26,6 +28,11 @@ class Spend extends Component {
         this.setState({
           session: userSession,
         })
+      }
+
+      logout() {
+        deleteSession()
+        this.props.history.push(`/`)
       }
 
       handleChange(event) {

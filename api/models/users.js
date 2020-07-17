@@ -35,7 +35,6 @@ const register = async(user = {}) => {
   }
 
   user.password = utils.hashPassword(user.password)
-
   // Save
   const params = {
     TableName: process.env.db,
@@ -46,6 +45,7 @@ const register = async(user = {}) => {
       createdAt: Date.now(),
       updatedAt: Date.now(),
       password: user.password,
+      purchases: {'food': 0.0, 'personal': 0.0, 'rent': 0.0},
     }
   }
 

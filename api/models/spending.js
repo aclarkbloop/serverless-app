@@ -6,21 +6,52 @@ const dynamodb = new AWS.DynamoDB.DocumentClient({
 
 const saveSpendData = async(spend = {}) => {
 
+  const user = await getByEmail(spend.email)
+  const map = user.purchases
+  if (spend.type === 'food') {
+    map.food = map.food + spend.amount
+  } else if (spend.type === 'personal') {
+    map.personal = map.personal + spend.amount
+  } else {
+    map.rent = map.rent + spend.amount
+  }
+  console.log(map.test)
+  
+
   const params = {
-    TableName: process.env.db2,
+    TableName: process.env.db,
     Item: {
-        hk: spend.email,
-        sk: 'spend',
-        sk2: spend.amount,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-        type: spend.type,
+      hk: user.email,
+      sk: 'user',
+      sk2: user.id,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+      password: user.password,
+      purchases: map,
       }
     }
 
   await dynamodb.put(params).promise()
 }
 
+const getByEmail = async(email) => {
+
+  const params = {
+    TableName: process.env.db,
+    KeyConditionExpression: 'hk = :hk',
+    ExpressionAttributeValues: { ':hk': email }
+  }
+
+  let user = await dynamodb.query(params).promise()
+  user = user.Items && user.Items[0] ? user.Items[0] : null
+  if (user) {
+    user.id = user.sk2
+    user.email = user.hk
+  }
+  return user
+}
+
 module.exports = {
   saveSpendData,
+  getByEmail,
 }
