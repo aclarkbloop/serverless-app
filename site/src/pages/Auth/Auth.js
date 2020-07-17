@@ -126,19 +126,7 @@ class Auth extends Component {
   render() {
 
     return (
-      <div className={`${styles.container} animateFadeIn`}>
         <div className={styles.containerInner}>
-
-          { /* Logo */}
-
-          <Link to='/' className={`${styles.logo}`}>
-            <img
-              draggable='false'
-              src={'./fullstack-app-title.png'}
-              alt='serverless-fullstack-application'
-            />
-          </Link>
-
           { /* Loading */}
 
           {this.state.loading && (
@@ -241,7 +229,6 @@ class Auth extends Component {
             </div>
           )}
         </div>
-      </div>
     )
   }
 }

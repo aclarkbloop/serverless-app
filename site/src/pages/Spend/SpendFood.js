@@ -34,8 +34,10 @@ class Spend extends Component {
 
       async handleSubmit(event) {
         event.preventDefault();
+        const amount = Number.parseFloat(this.state.value);
+        console.log(this.state.session.userEmail, "food", this.state.value);
         try {
-            await spendData();
+            await spendData(this.state.session.userEmail, "food", amount);
         } catch (error) {
             console.log(error)
         }
@@ -63,7 +65,7 @@ class Spend extends Component {
     
               { /* Content */ }
               <div className={styles.App}>
-              <form className={styles.form} onSubmit={this.handleSubmit}>
+              <form className={styles.foodForm} onSubmit={this.handleSubmit}>
                 <label>
                     Amount Spent:
                     <input type="text" value={this.state.value} onChange={this.handleChange} />

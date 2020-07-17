@@ -1,5 +1,6 @@
 html, body, #root {
-  display: block;
+  /* display: block; */
+  text-align: center;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -14,11 +15,11 @@ html, body, #root {
   font-size: 18px;
 }
 
-div, h1, h2, h3, h4, h5, h6, p, span, input, button, li {
+/* div, h1, h2, h3, h4, h5, h6, p, span, input, button, li {
   font-family: 'Titillium Web', sans-serif;
   font-size: 24px;
   color: #ffffff;
-}
+} */
 
 /**
  * Links
@@ -28,7 +29,7 @@ a, .link {
   font-family: 'Titillium Web', sans-serif;
   font-size: 24px;
   font-weight: 400;
-  color: rgba(255,255,255,0.6);
+  color: rgb(255, 141, 210);
   text-decoration: none;
   transition: all 0.14s ease;
 }
@@ -39,7 +40,7 @@ a:hover, .link:hover {
 }
 
 a:active, .link:active {
-  color: rgba(255,255,255,0.6);
+  color: rgb(255, 141, 210);
 }
 
 /**
@@ -54,7 +55,7 @@ a:active, .link:active {
   height: auto;
   margin: 20px 0 0 0;
   padding: 24px 24px 28px 24px;
-  background: #fd5750;
+  background: rgb(255, 141, 210);
   color: #fff;
   font-family: 'Titillium Web', sans-serif;
   font-size: 24px;
@@ -76,48 +77,4 @@ a:active, .link:active {
   cursor: pointer;
   transform: scale(1);
   outline: none;
-}
-
-/**
- * Animations
- */
-
-.animateFadeIn {
-  animation: fadeIn 0.45s;
-}
-
-.animateScaleIn {
-  animation: scaleIn 0.35s;
-}
-
-.animateFlicker {
-  animation: flicker 2.5s infinite;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8); 
-  }
-  to   { 
-    opacity: 1;
-    transform: scale(1); 
-  }
-}
-
-@keyframes flicker {
-	0% {
-		opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-	100% {
-		opacity: 0.3;
-	}
 }

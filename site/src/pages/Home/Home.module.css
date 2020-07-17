@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-content: center;
   justify-content: center;
   box-sizing: border-box;
@@ -10,7 +11,7 @@
 }
 
 .containerInner {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   box-sizing: border-box;
   background: #000;
@@ -21,44 +22,13 @@
   padding: 50px 15px 30px 15px;
 }
 
-.heroArtwork {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.heroArtwork img {
-  width: auto;
-  height: auto;
-  align-self: center;
-  max-height: 100%;
-  max-width: 500px;
-  user-select: none;
-}
-
-.heroTitle {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.heroTitle img {
-  width: auto;
-  height: auto;
-  align-self: center;
-  max-height: 100%;
-  max-width: 500px;
-  user-select: none;
+h1 {
+  font-size: 70px;
+  color: rgb(255, 141, 210);
 }
 
 .heroDescription {
-  display: flex;
+  display: inline-block;
   text-align: center;
   font-weight: 400;
   font-size: 24px;
@@ -80,7 +50,7 @@
 
 .containerCta .linkSignIn {
   padding: 10px;
-  color: #fd5750;
+  color: rgb(255, 141, 210);
   opacity: 0.65;
 }
 

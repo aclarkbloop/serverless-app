@@ -6,6 +6,8 @@ const {
   spending
 } = require('./controllers')
 
+process.env.tokenSecret = "12345"
+
 /**
  * Inference:
  * 

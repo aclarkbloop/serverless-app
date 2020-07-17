@@ -17,30 +17,17 @@ class Home extends Component {
   render() {
 
     return (
-      <div className={`${styles.container} animateFadeIn`}>
+      <div classname={styles.container}>
         <div className={styles.containerInner}>
-
-          { /* Hero Artwork */}
-
-          <div className={`${styles.heroArtwork} animateFlicker`}>
-            <img
-              draggable='false'
-              src={'./fullstack-app-artwork.png'}
-              alt='serverless-fullstack-application'
-            />
-          </div>
-          <div className={`${styles.heroTitle}`}>
-            <img
-              draggable='false'
-              src={'./fullstack-app-title.png'}
-              alt='serverless-fullstack-application'
-            />
-          </div>
+           <h1>Welcome,
+           to Amy's Serverless Spending.
+           </h1>
+          
 
           { /* Hero Description */}
 
           <div className={`${styles.heroDescription}`}>
-            A serverless full-stack application built with AWS Lambda, AWS HTTP API, Express.js, React & AWS DynamoDB.
+            Track your expenditures in a way that makes sense. 
           </div>
 
           { /* Call To Action */}

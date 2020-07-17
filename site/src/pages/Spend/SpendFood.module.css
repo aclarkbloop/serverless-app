@@ -55,6 +55,12 @@
     height: auto;
     font-size: 28px;
   }
+
+  .foodForm {
+    /* height: 50px;
+    width: 70px;
+    margin-top: 50px; */
+  }
   
   .app {
     text-align: center;

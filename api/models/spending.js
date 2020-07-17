@@ -4,17 +4,17 @@ const dynamodb = new AWS.DynamoDB.DocumentClient({
   region: process.env.AWS_REGION
 })
 
-const saveSpendData = async() => {
+const saveSpendData = async(spend = {}) => {
 
   const params = {
     TableName: process.env.db2,
     Item: {
-        hk: 'email',
+        hk: spend.email,
         sk: 'spend',
-        sk2: 50,
+        sk2: spend.amount,
         createdAt: Date.now(),
         updatedAt: Date.now(),
-        type: 'food',
+        type: spend.type,
       }
     }
 
