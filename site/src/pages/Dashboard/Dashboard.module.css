@@ -56,24 +56,6 @@
   font-size: 28px;
 }
 
-
-
-
-
-
-/* 
-::-moz-selection { 
-  background: #fd5750; 
-  color: #ffffff;
-  opacity: 1;
-}
-
-::selection { 
-  background: #fd5750; 
-  color: #ffffff;
-  opacity: 1;
-} */
-
 .app {
   text-align: center;
   background-color: #ff8ff0;
@@ -88,6 +70,9 @@
 
 .buttonHolder {
   margin-top: 100px;
+  display: inline-flex;
+  flex-direction: row;
+  position: relative
 }
 
 .button {
@@ -103,6 +88,18 @@
   font-size: 50px;
   font-family: "Lucida Console", Courier, monospace;
 }
+
+.individualButton {
+  position: relative;
+}
+
+.currDiv {
+  display: inline-block;
+  margin-left: 60px;
+  margin-right: 60px;
+  font-size: 40px;
+}
+
 
 .button:hover {background-color: #89828c}
 

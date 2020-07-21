@@ -19,10 +19,7 @@ class Home extends Component {
     return (
       <div classname={styles.container}>
         <div className={styles.containerInner}>
-           <h1>Welcome,
-           to Amy's Serverless Spending.
-           </h1>
-          
+           <h1> Amy's Serverless Spending.</h1>
 
           { /* Hero Description */}
 

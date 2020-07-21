@@ -5,19 +5,30 @@ import {
 } from 'react-router-dom'
 import {
     getSession,
-    spendData
+    spendData,
+    deleteSession,
   } from '../../utils'
 import styles from './SpendPersonal.module.css'
+import Button from 'react-bootstrap/Button'
 
 
 class Spend extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {value: ''};
+        this.state = {
+          value: '',
+          expression: '',
+        };
         
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.logout = this.logout.bind(this);
+      }
+
+      logout() {
+        deleteSession()
+        this.props.history.push(`/`)
       }
     
       async componentDidMount() { 
@@ -34,8 +45,13 @@ class Spend extends Component {
 
       async handleSubmit(event) {
         event.preventDefault();
+        const amount = Number.parseFloat(this.state.value);
+        const expr = `You just spent $${amount} on personal items!`
+        this.setState({
+          expression: expr,
+        })
         try {
-            await spendData();
+            await spendData(this.state.session.userEmail, "personal", amount);
         } catch (error) {
             console.log(error)
         }
@@ -46,6 +62,7 @@ class Spend extends Component {
 
         return (
             <div className={styles.containerInner}>
+
     
               { /* Navigation */ }
     
@@ -63,6 +80,9 @@ class Spend extends Component {
     
               { /* Content */ }
               <div className={styles.App}>
+              <Link to='/'>
+                 <Button className={styles.dashButton}>Back to dashboard</Button>
+              </Link>
               <form className={styles.form} onSubmit={this.handleSubmit}>
                 <label>
                     Amount Spent:
@@ -71,8 +91,9 @@ class Spend extends Component {
                     <input type="submit" value="Submit" />
                 </form>
               </div>
-              
-              
+                <div className={styles.expr}>
+                  {this.state.expression}
+                </div>
             </div>
          
         )

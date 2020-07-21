@@ -5,78 +5,97 @@ import {
 } from 'react-router-dom'
 import {
     getSession,
-    spendData
+    spendData,
+    deleteSession,
   } from '../../utils'
 import styles from './SpendRent.module.css'
+import Button from 'react-bootstrap/Button'
 
 
 class Spend extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {value: ''};
-        
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: '',
+      expression: ''
+    };
     
-      async componentDidMount() { 
-        const userSession = getSession()
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.logout = this.logout.bind(this);
+  }
 
-        this.setState({
-          session: userSession,
-        })
-      }
+  logout() {
+    deleteSession()
+    this.props.history.push(`/`)
+  }
 
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
+  async componentDidMount() { 
+    const userSession = getSession()
 
-      async handleSubmit(event) {
-        event.preventDefault();
-        try {
-            await spendData();
-        } catch (error) {
-            console.log(error)
-        }
-        
-      }
+    this.setState({
+      session: userSession,
+    })
+  }
 
-      render() {
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-        return (
-            <div className={styles.containerInner}>
-    
-              { /* Navigation */ }
-    
-              <div className={styles.navigationContainer}>
-                <div 
-                  className={`link`}>
-                    { this.state.session ? this.state.session.userEmail : '' }
-                  </div>
-                <div 
-                  className={`link`}
-                  onClick={this.logout}>
-                    logout
-                  </div>
+  async handleSubmit(event) {
+    event.preventDefault();
+    const amount = Number.parseFloat(this.state.value);
+    const expr = `You just spent $${amount} on rent!`
+    this.setState({
+      expression: expr,
+    })
+    try {
+        await spendData(this.state.session.userEmail, "rent", amount);
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
+  render() {
+
+    return (
+        <div className={styles.containerInner}>
+
+          { /* Navigation */ }
+
+          <div className={styles.navigationContainer}>
+            <div 
+              className={`link`}>
+                { this.state.session ? this.state.session.userEmail : '' }
               </div>
-    
-              { /* Content */ }
-              <div className={styles.App}>
-              <form className={styles.form} onSubmit={this.handleSubmit}>
-                <label>
-                    Amount Spent:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                    <input type="submit" value="Submit" />
-                </form>
+            <div 
+              className={`link`}
+              onClick={this.logout}>
+                logout
               </div>
-              
-              
-            </div>
-         
-        )
-      }
+          </div>
+
+          { /* Content */ }
+          <div className={styles.App}>
+            <Link to='/'>
+              <Button className={styles.dashButton}>Back to dashboard</Button>
+            </Link>
+          <form className={styles.form} onSubmit={this.handleSubmit}>
+            <label>
+                Amount Spent:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+                <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <div className={styles.expr}>
+              {this.state.expression}
+          </div>
+        </div>
+     
+    )
+  }
 }
 
 export default withRouter(Spend)

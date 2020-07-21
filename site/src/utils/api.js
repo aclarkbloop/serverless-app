@@ -8,7 +8,10 @@ export const spendData = async (email, type, amount) => {
   return await requestApi('/spending/', 'POST', { email, type, amount })
 }
 
-// email, type, amount
+
+export const getCurrSpendData = async (email, type) => {
+  return await requestApi(`/getSpendingData/?email=${email}`, 'GET')
+}
 
 /**
  * Register a new user

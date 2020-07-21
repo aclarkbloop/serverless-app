@@ -10,7 +10,7 @@
 }
 
 .containerInner {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   box-sizing: border-box;
   background: #000;

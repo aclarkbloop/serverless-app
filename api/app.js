@@ -54,6 +54,8 @@ app.options(`*`, (req, res) => {
 
 app.post(`/spending/`, spending.saveSpendingData)
 
+app.get('/getSpendingData/', spending.getData)
+
 app.post(`/users/register`, users.register)
 
 app.post(`/users/login`, users.login)

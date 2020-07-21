@@ -8,7 +8,7 @@ html, body, #root {
   background: #000;
   color: #ffffff;
   margin: 0;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Lucida Console", Courier, monospace;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,6 +32,7 @@ a, .link {
   color: rgb(255, 141, 210);
   text-decoration: none;
   transition: all 0.14s ease;
+  font-family: "Lucida Console", Courier, monospace;
 }
 
 a:hover, .link:hover {
@@ -57,7 +58,7 @@ a:active, .link:active {
   padding: 24px 24px 28px 24px;
   background: rgb(255, 141, 210);
   color: #fff;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Lucida Console", Courier, monospace;
   font-size: 24px;
   font-weight: 600;
   border-radius: 4px;

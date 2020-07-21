@@ -9,17 +9,21 @@ import {
     deleteSession
   } from '../../utils'
 import styles from './SpendFood.module.css'
+import Button from 'react-bootstrap/Button'
 
 
 class Spend extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {value: ''};
+        this.state = {
+          value: '',
+          expression: '',
+        };
         
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.logout = this.logout.bind(this)
+        this.logout = this.logout.bind(this);
       }
     
       async componentDidMount() { 
@@ -42,7 +46,10 @@ class Spend extends Component {
       async handleSubmit(event) {
         event.preventDefault();
         const amount = Number.parseFloat(this.state.value);
-        console.log(this.state.session.userEmail, "food", this.state.value);
+        const expr = `You just spent $${amount} on food!`
+        this.setState({
+          expression: expr,
+        })
         try {
             await spendData(this.state.session.userEmail, "food", amount);
         } catch (error) {
@@ -72,16 +79,20 @@ class Spend extends Component {
     
               { /* Content */ }
               <div className={styles.App}>
-              <form className={styles.foodForm} onSubmit={this.handleSubmit}>
-                <label>
+                <Link to='/'>
+                 <Button className={styles.dashButton}>Back to dashboard</Button>
+                </Link>
+                <form className={styles.foodForm} onSubmit={this.handleSubmit}>
+                  <label>
                     Amount Spent:
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
-                </label>
-                    <input type="submit" value="Submit" />
+                  </label>
+                      <input type="submit" value="Submit" />
                 </form>
               </div>
-              
-              
+                <div className={styles.expr}>
+                  {this.state.expression}
+                </div>
             </div>
          
         )

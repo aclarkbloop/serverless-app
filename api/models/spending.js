@@ -9,13 +9,12 @@ const saveSpendData = async(spend = {}) => {
   const user = await getByEmail(spend.email)
   const map = user.purchases
   if (spend.type === 'food') {
-    map.food = map.food + spend.amount
+    map.food = Math.round((map.food + spend.amount) * 100) / 100
   } else if (spend.type === 'personal') {
-    map.personal = map.personal + spend.amount
+    map.personal = Math.round((map.personal + spend.amount) * 100) / 100
   } else {
-    map.rent = map.rent + spend.amount
+    map.rent = Math.round((map.rent + spend.amount) * 100) / 100
   }
-  console.log(map.test)
   
 
   const params = {
@@ -51,7 +50,14 @@ const getByEmail = async(email) => {
   return user
 }
 
+const getData = async(info = {}) => {
+  const user = await getByEmail(info.email)
+  const map = user.purchases
+  return map
+}
+
 module.exports = {
   saveSpendData,
   getByEmail,
+  getData,
 }
